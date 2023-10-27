@@ -1,6 +1,5 @@
 import {galleryItems} from './gallery-items.js';
 
-
 // Change code below this line
 
 console.log(galleryItems);
@@ -24,21 +23,21 @@ function createMarkup(array) {
 
 }
 
- function onModal(e) {
-     e.preventDefault()
-     if (e.target.nodeName !== "IMG") {
-         return;
-     }
+function onModal(e) {
+    e.preventDefault()
+    if (e.target.nodeName !== "IMG") {
+        return;
+    }
 
-     const isItemImage = e.target.classList.contains('gallery__image');
-     if (!isItemImage){
-         return;
-     }
+    const currentImgUrl = e.target.dataset.source;
+    const product = galleryItems.find(({original}) => original === currentImgUrl);
 
-     const currentImgUrl = e.target.dataset.source;
+    const instance = basicLightbox.create(`
+  <div class="modal">
+    <img src="${product.original}" alt="${product.description}"  width="800" height="600"/>
+  </div>
+  `);
 
-     const instance = basicLightbox.create(
-         `<img src="${currentImgUrl}" width="800" height="600"/>`);
-     instance.show();
+    instance.show();
 
- }
+}
