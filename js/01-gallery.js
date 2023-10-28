@@ -36,7 +36,24 @@ function onModal(e) {
   <div class="modal">
     <img src="${product.original}" alt="${product.description}"  width="800" height="600"/>
   </div>
-  `);
+  `, {
+            onShow: instance => {
+                instance.element().querySelector('img').onclick = instance.close;
+
+                window.addEventListener('keydown', eventHandler);
+            },
+            onClose: instance => {
+                window.removeEventListener('keydown', eventHandler);
+            },
+        },
+    );
+
+    function eventHandler(e) {
+        if (e.code === 'Escape') {
+            instance.close();
+            return;
+        }
+    }
 
     instance.show();
 
