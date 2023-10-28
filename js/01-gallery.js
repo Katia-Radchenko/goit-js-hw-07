@@ -49,7 +49,7 @@ function onModal(e) {
     );
 
     function eventHandler(e) {
-        if (e.code === 'Escape') {
+        if (e.key === 'Escape') {
             instance.close();
             return;
         }
