@@ -4,8 +4,7 @@ import {galleryItems} from './gallery-items.js';
 console.log(galleryItems);
 
 const list = document.querySelector('.gallery')
-list.insertAdjacentHTML('beforeend', createMarkup(galleryItems))
-list.addEventListener('click', onModal)
+
 
 function createMarkup(array) {
     return array.map(({preview, original, description}) =>
@@ -18,14 +17,13 @@ function createMarkup(array) {
 
 }
 
-function onModal(e) {
-    e.preventDefault()
-
-    const lightbox = new SimpleLightbox('.gallery a', {
-        captionsData: 'alt',
-        captionDelay: `250`,
-        captionPosition: 'bottom',
-    });
+list.insertAdjacentHTML('beforeend', createMarkup(galleryItems))
 
 
-}
+const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: `250`,
+    captionPosition: 'bottom',
+});
+
+

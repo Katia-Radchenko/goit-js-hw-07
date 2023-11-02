@@ -30,11 +30,10 @@ function onModal(e) {
     }
 
     const currentImgUrl = e.target.dataset.source;
-    const product = galleryItems.find(({original}) => original === currentImgUrl);
 
     const instance = basicLightbox.create(`
   <div class="modal">
-    <img src="${product.original}" alt="${product.description}"  width="800" height="600"/>
+    <img src="${currentImgUrl}" alt="${e.target.description}"  width="800" height="600"/>
   </div>
   `, {
             onShow: instance => {
